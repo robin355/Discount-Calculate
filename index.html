@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculation</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <main>
+        <section
+            class="container text-md-center text-sm-center mt-4 h-50 bg-success p-2 text-white bg-opacity-75 w-50 rounded">
+            <div class="p-4">
+                <div class="text-white">
+                    <h1>Discount Amount</h1>
+                    <h1><span id="total-amount">00</span></h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <input id="input-total" type="text" placeholder="please Enter Total Amount">
+                    </div>
+                    <div class="col-sm-6">
+                        <input id="input-parsent" type="text" placeholder="Please Enter Discount %">
+                    </div>
+                </div>
+                <button id="discount-btn" class="btn btn-info m-4 text-white">Discount</button>
+            </div>
+
+        </section>
+    </main>
+    <script>
+        function getInputValue(inputId) {
+            const input = document.getElementById(inputId);
+            const inputString = input.value;
+            const inputValue = parseFloat(inputString);
+            input.value = '';
+            return inputValue;
+
+        }
+        function priviosValue(priviousId) {
+            const privious = document.getElementById(priviousId);
+            const priviousString = privious.innerText;
+            const priviousTotal = parseFloat(priviousString);
+            return priviousTotal;
+        }
+        // function totalAmount(discounId, discounttotal) {
+        //     discounId.innerText = discounttotal;
+        // }
+
+
+        const discountBtn = document.getElementById('discount-btn');
+        discountBtn.addEventListener('click', function () {
+            const inputTaka = getInputValue('input-total');
+            const discountparsent = getInputValue('input-parsent');
+            const DiscountTotal = (inputTaka - (inputTaka * discountparsent / 100));
+            const setTotal = document.getElementById('total-amount');
+            setTotal.innerText = DiscountTotal;
+
+        })
+
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
